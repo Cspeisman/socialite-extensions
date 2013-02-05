@@ -8,7 +8,9 @@
 
     /**
      * Google plus doesn't offer a share widget that is icon only, like their badge
-     * u | data-url    | URL to share
+     * The only param is url.
+     *
+     * url | data-url    | URL to share
      *
      * Inherits content from document meta information
      *

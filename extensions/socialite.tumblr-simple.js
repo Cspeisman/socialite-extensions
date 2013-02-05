@@ -7,11 +7,15 @@
 {
 
     /**
-     * FB Share is no longer supported, but params are:
+     * This script is based on the tumblr bookmarklet: http://www.tumblr.com/apps
+     * params are:
+     *
      * u | data-url    | URL to share
      * t | data-title  | Title to share
      *
      */
+
+    Socialite.network('tumblr');
 
     function addEvent(obj, evt, fn, capture) {
         if (window.attachEvent) {

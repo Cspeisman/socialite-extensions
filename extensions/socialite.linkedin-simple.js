@@ -7,9 +7,11 @@
 {
 
     /**
-     * FB Share is no longer supported, but params are:
-     * u | data-url    | URL to share
-     * t | data-title  | Title to share
+     * This is based on the linkedin bookmarklet: http://www.linkedin.com/static?key=browser_bookmarklet
+     * Params are:
+     *
+     * url   | data-url    | URL to share
+     * title | data-title  | Title to share
      *
      */
 
