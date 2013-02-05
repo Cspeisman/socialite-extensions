@@ -37,7 +37,7 @@
     Socialite.widget('tumblr', 'simple', {
         init: function(instance) {
             var el = document.createElement('a'),
-                href = "//www.tumblr.com/share?",
+                href = "//www.tumblr.com/share?v=3&",
                 attrs = Socialite.getDataAttributes(instance.el, true, true),
                 selection;
 
