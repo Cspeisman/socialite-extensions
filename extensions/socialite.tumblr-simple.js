@@ -1,5 +1,5 @@
 /*!
- * Socialite v2.0 - Plain Google + Share Extension
+ * Socialite v2.0 - Plain Tumblr Share Extension
  * Copyright (c) 2013 Dan Drinkard
  * Dual-licensed under the BSD or MIT licenses: http://socialitejs.com/license.txt
  */
@@ -7,10 +7,9 @@
 {
 
     /**
-     * Google plus doesn't offer a share widget that is icon only, like their badge
+     * FB Share is no longer supported, but params are:
      * u | data-url    | URL to share
-     *
-     * Inherits content from document meta information
+     * t | data-title  | Title to share
      *
      */
 
@@ -24,17 +23,28 @@
         }
     }
 
-    Socialite.widget('googleplus', 'simple', {
+    function safeGetSelection() {
+        if (window.getSelection) return window.getSelection();
+        if (document.getSelection) return document.getSelection();
+        if (document.selection) return document.selection.createRange().text;
+        return '';
+    }
+
+    Socialite.widget('tumblr', 'simple', {
         init: function(instance) {
             var el = document.createElement('a'),
-                href = "//plus.google.com/share?",
-                attrs = Socialite.getDataAttributes(instance.el, true, true);
+                href = "//www.tumblr.com/share?",
+                attrs = Socialite.getDataAttributes(instance.el, true, true),
+                selection;
 
             el.className = instance.widget.name;
             Socialite.copyDataAttributes(instance.el, el);
+            if(attrs.url) href += 'u=' + encodeURIComponent(attrs.url);
+            if(attrs['title']) href += '&t=' + encodeURIComponent(attrs['title']);
+            if(selection = safeGetSelection()) href += '&s=' + encodeURIComponent(selection);
             href += '&' + Socialite.getDataAttributes(el, true);
             el.setAttribute('href', href);
-            el.setAttribute('data-lang', instance.el.getAttribute('data-lang') || Socialite.settings.googleplus.lang);
+            el.setAttribute('data-lang', instance.el.getAttribute('data-lang') || Socialite.settings.linkedin.lang);
             if (instance.el.getAttribute('data-image')) {
                 imgTag = document.createElement('img');
                 imgTag.src = instance.el.getAttribute('data-image');
@@ -43,7 +53,7 @@
             addEvent(el, 'click', function(e){
                 var t = e? e.target : window.event.srcElement;
                 e.preventDefault();
-                window.open(el.getAttribute('href'), 'gplus-share', 'left=' + (screen.availWidth/2 - 350) + ',top=' + (screen.availHeight/2 - 163) + ',height=300,width=600,menubar=0,resizable=0,status=0,titlebar=0');
+                window.open(el.getAttribute('href'), 'tumblr-simple', 'left=' + (screen.availWidth/2 - 225) + ',top=' + (screen.availHeight/2 - 215) + ',height=430,width=450,menubar=0,resizable=0,status=0,titlebar=0');
             });
             instance.el.appendChild(el);
         },
