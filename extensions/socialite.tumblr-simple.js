@@ -44,7 +44,6 @@
             if(selection = safeGetSelection()) href += '&s=' + encodeURIComponent(selection);
             href += '&' + Socialite.getDataAttributes(el, true);
             el.setAttribute('href', href);
-            el.setAttribute('data-lang', instance.el.getAttribute('data-lang') || Socialite.settings.linkedin.lang);
             if (instance.el.getAttribute('data-image')) {
                 imgTag = document.createElement('img');
                 imgTag.src = instance.el.getAttribute('data-image');
