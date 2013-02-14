@@ -39,11 +39,10 @@
             Socialite.copyDataAttributes(instance.el, el);
             if(title) {
                 href += '&subject=' + title;
-                href += '&body=' + title;
             }
-            if(url) href += '%0A' + url;
-            if(selection) href += '%0A' + selection;
-            else if(description) href += '%0A' + description;
+            if(selection) href += selection;
+            else if(description) href += description;
+            if(url) href += '%0A%0A' + url;
             el.setAttribute('href', href);
             if (instance.el.getAttribute('data-image')) {
                 imgTag = document.createElement('img');
