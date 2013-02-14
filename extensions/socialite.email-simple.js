@@ -28,7 +28,7 @@
     Socialite.widget('email', 'simple', {
         init: function(instance) {
             var el = document.createElement('a'),
-                href = "mailto:",
+                href = "mailto:?",
                 attrs = Socialite.getDataAttributes(instance.el, true, true),
                 title = encodeURIComponent(attrs['title']),
                 description = encodeURIComponent(attrs['description']),
