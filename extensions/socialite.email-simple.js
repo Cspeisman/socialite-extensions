@@ -39,6 +39,7 @@
             Socialite.copyDataAttributes(instance.el, el);
             if(title) {
                 href += '&subject=' + title;
+                href += '&body=';
             }
             if(selection) href += selection;
             else if(description) href += description;
