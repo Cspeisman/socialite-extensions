@@ -22,7 +22,7 @@
     twitterGetCount = function(instance, options) {
         var params = getParams(instance),
             counturl = params['counturl'] || params['url'],
-            callback = 'socialiteTwitter' + instance.uid,
+            callback = 'socialiteTwitterSimple' + instance.uid,
             endpoint = "https://cdn.api.twitter.com/1/urls/count.json?url=" + counturl + "&callback=" + callback,
             options = options || {},
             scriptTag = document.createElement('script');
