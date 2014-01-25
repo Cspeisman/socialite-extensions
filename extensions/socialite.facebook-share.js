@@ -95,6 +95,11 @@
             addEvent(el, 'click', function(e){
                 var t = e? e.target : window.event.srcElement;
                 e.preventDefault();
+                var counter = el.querySelectorAll('.counter');
+                counter.length && (function(){
+                    var count = parseFloat(counter[0].innerHTML);
+                    counter[0].innerHTML = count + 1;
+                })();
                 window.open(el.getAttribute('href'), 'fb-share', 'left=' + (screen.availWidth/2 - 350) + ',top=' + (screen.availHeight/2 - 163) + ',height=325,width=700,menubar=0,resizable=0,status=0,titlebar=0');
             });
             instance.el.appendChild(el);

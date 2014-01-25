@@ -3,12 +3,21 @@
  * Copyright (c) 2013 Dan Drinkard
  * Dual-licensed under the BSD or MIT licenses: http://socialitejs.com/license.txt
  *
+ * See https://dev.twitter.com/docs/intents/events/
  */
 (function(window, document, Socialite, undefined)
 {
-    // https://dev.twitter.com/docs/intents/events/
-    var twitterActivate = function(instance)
-    {
+    var addEvent = function(obj, evt, fn, capture) {
+        if (window.attachEvent) {
+            obj.attachEvent("on" + evt, fn);
+        }
+        else {
+            if (!capture) capture = false; // capture
+            obj.addEventListener(evt, fn, capture);
+        }
+    },
+
+    twitterActivate = function(instance) {
         if (window.twttr && typeof window.twttr.widgets === 'object' && typeof window.twttr.widgets.load === 'function') {
             window.twttr.widgets.load();
         }
@@ -83,6 +92,13 @@
                 counterTag.href="https://twitter.com/search?q=" + instance.el.getAttribute('data-url');
                 el.appendChild(counterTag);
             }
+            addEvent(el, 'click', function(e){
+                var counter = el.querySelectorAll('.counter');
+                counter.length && (function(){
+                    var count = parseFloat(counter[0].innerHTML);
+                    counter[0].innerHTML = count + 1;
+                })();
+            })
             instance.el.appendChild(el);
         },
         activate: twitterActivate
