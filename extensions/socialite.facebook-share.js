@@ -51,7 +51,7 @@
         for(var i in parts) {
 
             if  (i%2) {
-                hsh[parts[i-1]] = decodeURIComponent(parts[i]);
+                hsh[parts[i-1]] = parts[i];
             };
         };
         return hsh;
@@ -61,7 +61,7 @@
         (document.querySelectorAll('style.custom-count-widgets').length || (function(){
             var styleTag = document.createElement('style');
             styleTag.className = 'custom-count-widgets';
-            styleTag.innerHTML = '.socialite .counter { border-radius: 2px; position:relative; margin-left: 5px; vertical-align: middle; display:inline-block; min-width:6px; border:1px solid #e6e5e3; padding:6px 7px; font-family:"helvetica neue", helvetica, arial, sans-serif; font-size:13px; line-height:1.2; color:#222; text-decoration: none; /*border-radius: 2px;*/ }' +
+            styleTag.innerHTML = '.socialite .counter { border-radius: 2px; background:#fff; position:relative; margin-left: 5px; vertical-align: middle; display:inline-block; min-width:6px; border:1px solid #e6e5e3; padding:6px 7px; font-family:"helvetica neue", helvetica, arial, sans-serif; font-size:13px; line-height:1.2; color:#222; text-decoration: none; }' +
                                  '.socialite .counter:before { content:""; position:absolute; left: -5px; top: 10px; background:#fff; border:1px solid #e6e5e3; border-right:none; border-top:none; display:block; width:7px; height:6px; -webkit-transform: rotate(61deg) skewX(35deg); -moz-transform: rotate(61deg) skewX(35deg); -o-transform: rotate(61deg) skewX(35deg); -ms-transform: rotate(61deg) skewX(35deg); transform: rotate(61deg) skewX(35deg); }' +
                                  '.socialite img { vertical-align: middle; }';
             document.getElementsByTagName('head')[0].appendChild(styleTag);
@@ -86,7 +86,7 @@
                 imgTag.src = instance.el.getAttribute('data-image');
                 el.appendChild(imgTag);
             }
-            if (instance.el.getAttribute('data-show-counts')) {
+            if (instance.el.getAttribute('data-show-counts') == 'true') {
                 var counterTag = document.createElement('span')
                 counterTag.className = 'counter';
                 counterTag.innerHTML = '&hellip;';
@@ -105,7 +105,7 @@
             instance.el.appendChild(el);
         },
         activate: function(instance){
-            if (getParams(instance)['show-counts']) {
+            if (getParams(instance)['show-counts'] == 'true') {
                 appendStyleSheet();
                 facebookGetCount(instance);
             }
