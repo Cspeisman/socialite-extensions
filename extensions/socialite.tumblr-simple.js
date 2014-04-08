@@ -49,9 +49,14 @@
             href += '&' + Socialite.getDataAttributes(el, true);
             el.setAttribute('href', href);
             if (instance.el.getAttribute('data-image')) {
-                imgTag = document.createElement('img');
+                var imgTag = document.createElement('img');
                 imgTag.src = instance.el.getAttribute('data-image');
                 el.appendChild(imgTag);
+            }
+            if (instance.el.getAttribute('data-icon')) {
+                var iconTag = document.createElement('span');
+                span.className = instance.el.getAttribute('data-icon');
+                el.appendChild(iconTag);
             }
             addEvent(el, 'click', function(e){
                 var t = e? e.target : window.event.srcElement;

@@ -82,9 +82,14 @@
             el.setAttribute('href', href);
             el.setAttribute('data-lang', instance.el.getAttribute('data-lang') || Socialite.settings.facebook.lang);
             if (instance.el.getAttribute('data-image')) {
-                imgTag = document.createElement('img');
+                var imgTag = document.createElement('img');
                 imgTag.src = instance.el.getAttribute('data-image');
                 el.appendChild(imgTag);
+            }
+            if (instance.el.getAttribute('data-icon')) {
+                var iconTag = document.createElement('span');
+                span.className = instance.el.getAttribute('data-icon');
+                el.appendChild(iconTag);
             }
             if (instance.el.getAttribute('data-show-counts') == 'true') {
                 var counterTag = document.createElement('span')
