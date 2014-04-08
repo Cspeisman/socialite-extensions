@@ -85,6 +85,11 @@
                 imgTag.src = instance.el.getAttribute('data-image');
                 el.appendChild(imgTag);
             }
+            if (instance.el.getAttribute('data-icon')) {
+                var iconTag = document.createElement('span');
+                span.className = instance.el.getAttribute('data-icon');
+                el.appendChild(iconTag);
+            }
             if (instance.el.getAttribute('data-show-counts') == 'true') {
                 var counterTag = document.createElement('a')
                 counterTag.className = 'counter';
