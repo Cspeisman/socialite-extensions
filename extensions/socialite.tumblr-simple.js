@@ -55,7 +55,7 @@
             }
             if (instance.el.getAttribute('data-icon')) {
                 var iconTag = document.createElement('span');
-                span.className = instance.el.getAttribute('data-icon');
+                iconTag.className = instance.el.getAttribute('data-icon');
                 el.appendChild(iconTag);
             }
             addEvent(el, 'click', function(e){
