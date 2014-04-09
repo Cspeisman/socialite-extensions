@@ -68,7 +68,7 @@
         })());
     }
 
-    Socialite.widget('facebook', 'share', {
+    Socialite.widget('facebook', 'simple', {
         init: function(instance) {
             var el = document.createElement('a'),
                 href = "//www.facebook.com/share.php?",
