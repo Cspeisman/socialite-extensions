@@ -108,7 +108,7 @@
                 e.preventDefault();
                 var counter = el.querySelectorAll('.counter');
                 counter.length && (function(){
-                    if (counter[0].innerHTML.match(/[km.]/g) !== null) {
+                    if (counter[0].innerHTML.match(/[km.]/g) === null) {
                         var count = parseFloat(counter[0].innerHTML);
                         counter[0].innerHTML = count + 1;
                     }
