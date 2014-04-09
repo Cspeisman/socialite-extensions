@@ -42,7 +42,7 @@
                 if (count > 1000000) {
                     count = (count / 1000000).toFixed(1) + 'm';
                 } else if (count > 1000) {
-                    count = (count / 1000000).toFixed(1) + 'k';
+                    count = (count / 1000).toFixed(1) + 'k';
                 }
                 instance.el.querySelectorAll('.counter')[0].innerHTML = count;
                 delete window[callback];
