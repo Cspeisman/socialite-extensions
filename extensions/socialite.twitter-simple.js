@@ -38,7 +38,13 @@
             scriptTag.src = endpoint;
             document.getElementsByTagName('script')[0].insertBefore(scriptTag);
             window[callback] = function(data){
-                instance.el.querySelectorAll('.counter')[0].innerHTML = data.count;
+                var count = data.count;
+                if (count > 1000000) {
+                    count = (count / 1000000).toFixed(1) + 'm';
+                } else if (count > 1000) {
+                    count = (count / 1000000).toFixed(1) + 'k';
+                }
+                instance.el.querySelectorAll('.counter')[0].innerHTML = count;
                 delete window[callback];
                 scriptTag.parentNode.removeChild(scriptTag);
             }
