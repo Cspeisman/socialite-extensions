@@ -109,8 +109,10 @@
             addEvent(el, 'click', function(e){
                 var counter = el.querySelectorAll('.counter');
                 counter.length && (function(){
-                    var count = parseFloat(counter[0].innerHTML);
-                    counter[0].innerHTML = count + 1;
+                    if (counter[0].innerHTML.match(/[km.]/g) !== null) {
+                        var count = parseFloat(counter[0].innerHTML);
+                        counter[0].innerHTML = count + 1;
+                    }
                 })();
             })
             instance.el.appendChild(el);
