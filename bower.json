@@ -3,6 +3,6 @@
   "version": "0.1.0",
   "main": ["./extensions/"],
   "dependencies": {
-    "socialite": ">=2.0.0"
+    "socialite": "tmort/socialite"
   }
 }
