@@ -85,9 +85,9 @@
                 imgTag.src = instance.el.getAttribute('data-image');
                 el.appendChild(imgTag);
             }
-            if (instance.el.getAttribute('data-icon')) {
+            if (instance.el.getAttribute('data-sficon')) {
                 var iconTag = document.createElement('span');
-                iconTag.className = instance.el.getAttribute('data-icon');
+                iconTag.className = instance.el.getAttribute('data-sficon');
                 el.appendChild(iconTag);
             }
             if (instance.el.getAttribute('data-show-counts') == 'true') {
