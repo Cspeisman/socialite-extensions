@@ -36,7 +36,7 @@
             options = options || {},
             scriptTag = document.createElement('script');
             scriptTag.src = endpoint;
-            document.getElementsByTagName('script')[0].insertBefore(scriptTag);
+            document.insertBefore(document.getElementsByTagName('script')[0], scriptTag);
             window[callback] = function(data){
                 var count = data.count;
                 if (count > 1000000) {
