@@ -34,9 +34,10 @@
             callback = 'socialiteTwitterSimple' + instance.uid,
             endpoint = "https://cdn.api.twitter.com/1/urls/count.json?url=" + counturl + "&callback=" + callback,
             options = options || {},
+            ref = document.getElementsByTagName('script')[0],
             scriptTag = document.createElement('script');
             scriptTag.src = endpoint;
-            document.insertBefore(document.getElementsByTagName('script')[0], scriptTag);
+            ref.parentNode.insertBefore(scriptTag, ref);
             window[callback] = function(data){
                 var count = data.count;
                 if (count > 1000000) {
