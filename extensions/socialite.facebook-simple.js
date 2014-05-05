@@ -31,9 +31,10 @@
             callback = 'socialiteFacebookShare' + instance.uid,
             endpoint = "https://graph.facebook.com/fql?q=" + encodeURIComponent("select total_count from link_stat where url = '") + counturl + "'&callback=" + callback,
             options = options || {},
+            ref = document.getElementsByTagName('script')[0],
             scriptTag = document.createElement('script');
             scriptTag.src = endpoint;
-            document.getElementsByTagName('script')[0].insertBefore(scriptTag);
+            ref.parentNode.insertBefore(scriptTag, ref);
             window[callback] = function(data){
                 var count = data.data[0].total_count;
                 if (count > 1000000) {
